@@ -24,11 +24,11 @@
             </div>
             <div class="form-group">
                 <label >Start time</label>
-                <input type="time" class="form-control" name="start_time" >
+                <input type="datetime-local" class="form-control" name="start_time" >
             </div>
             <div class="form-group">
                 <label >End time</label>
-                <input type="time" class="form-control" name="end_time" >
+                <input type="datetime-local" class="form-control" name="end_time" >
             </div>
             <div class="form-group">
                 <label >Laps</label>

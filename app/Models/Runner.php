@@ -16,17 +16,16 @@ class Runner extends Model
 
     public function getDurationAttribute()
     {
-
-        $start_datetime = new DateTime(date('Y-m-d').' '.$this->start_time);
-        $end_datetime = new DateTime(date('Y-m-d').' '.$this->end_time);
-        $duration=strtotime($this->end_time) - strtotime($this->start_time);
+        $actual_start_at = Carbon::parse($this->start_time);
+        $actual_end_at   = Carbon::parse($this->end_time);
+        $duration            = $actual_end_at->diffInSeconds($actual_start_at, true);
        return $duration;
     }
 
 
     public function getSpeedAttribute()
     {
-        $distance=(((2*3.14)*$this->radius)*$this->laps)/1000;
+        $distance=(((2*3.14)*$this->radius)*$this->laps);
 
         return $distance;
     }

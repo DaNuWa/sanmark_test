@@ -17,8 +17,8 @@ class CreateRunnersTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('radius');
-            $table->time('start_time');
-            $table->time('end_time');
+            $table->dateTime('start_time');
+            $table->dateTime('end_time');
             $table->integer('laps');
             $table->timestamps();
         });

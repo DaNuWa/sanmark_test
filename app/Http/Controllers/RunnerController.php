@@ -12,7 +12,7 @@ class RunnerController extends Controller
     public function store(Request $request)
     {
         $radius = Radius::all();
-  $max = $radius[0]->radius;
+        $max = $radius[0]->radius??50;
 
         //Validating the records before store
         $validated = $request->validate([
@@ -49,9 +49,9 @@ class RunnerController extends Controller
         $data =Runner::all();
 
         $runner_info = $data->map(function ($runner){
-         //   $speed=0 ? 0 :((int)$runner->speed/(int)$runner->duration);
+          $speed=($runner->speed/$runner->duration)*3.6;
             return ["name"=>$runner->name,"radius" => $runner->radius , "laps" => $runner->laps,"start_time"=>$runner->start_time,
-            "end_time"=>$runner->end_time,"duration"=>$runner->duration];//,"speed"=>round($speed,2)];
+            "end_time"=>$runner->end_time,"duration"=>$runner->duration,"speed"=>round($speed,2)];
         });
         try {
             return ((new \Yajra\DataTables\DataTables)::of($runner_info)->addIndexColumn()->make(true));
