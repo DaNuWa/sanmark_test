@@ -25,6 +25,21 @@ class RunnerController extends Controller
         return redirect(route('records.report'));
     }
 
+    public function radius(Request $request)
+    {
+        //Validating the records before store
+        $validated = $request->validate([
+            'radius' => 'required|numeric',
+        ]);
+
+
+
+        //Create the record
+        Runner::create($validated);
+        return redirect(route('records.report'));
+    }
+
+
     public function reportAjax()
     {
         $data =Runner::all();

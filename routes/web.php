@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 //Route for submitting informations
 Route::post('/submit-records',[\App\Http\Controllers\RunnerController::class,'store'])->name('records.store');
+Route::post('/submit-radius',[\App\Http\Controllers\RunnerController::class,'radius'])->name('radius.store');
 
 Route::get('/reports',[\App\Http\Controllers\RunnerController::class,'report'])->name('records.report');
 Route::get('/reports/ajax',[\App\Http\Controllers\RunnerController::class,'reportAjax'])->name('records.report.ajax');
