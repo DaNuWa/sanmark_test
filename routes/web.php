@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('insert');
 })->name('records.insert');
 
+Route::get('/radius', function () {
+    return view('radius');
+})->name('radius');
+
 //Route for submitting informations
 Route::post('/submit-records',[\App\Http\Controllers\RunnerController::class,'store'])->name('records.store');
 Route::post('/submit-radius',[\App\Http\Controllers\RunnerController::class,'radius'])->name('radius.store');

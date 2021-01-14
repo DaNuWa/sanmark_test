@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRadiiTable extends Migration
+class CreateRadiusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateRadiiTable extends Migration
      */
     public function up()
     {
-        Schema::create('radii', function (Blueprint $table) {
+        Schema::create('radius', function (Blueprint $table) {
             $table->id();
+            $table->integer('radius');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateRadiiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('radii');
+        Schema::dropIfExists('radius');
     }
 }

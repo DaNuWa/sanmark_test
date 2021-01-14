@@ -58,6 +58,10 @@
                 <li class="nav-item">
                     <a class="nav-link"  href="{{route('records.report')}}">Reports</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link"  href="{{route('radius')}}">Insert radius</a>
+                </li>
+
 
             </ul>
         </div>

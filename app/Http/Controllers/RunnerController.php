@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Radius;
 use App\Models\Runner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RunnerController extends Controller
 {
     public function store(Request $request)
     {
+        $radius = Radius::all();
+  $max = $radius[0]->radius;
+
         //Validating the records before store
         $validated = $request->validate([
-            'radius' => 'required|numeric|max:80',
+            'radius' => "required|numeric|max:$max",
             'name' => 'required',
             'laps' => 'required',
             'start_time' => 'required',
@@ -32,10 +37,9 @@ class RunnerController extends Controller
             'radius' => 'required|numeric',
         ]);
 
-
-
+        DB::table('radius')->delete();
         //Create the record
-        Runner::create($validated);
+        Radius::create($validated);
         return redirect(route('records.report'));
     }
 
