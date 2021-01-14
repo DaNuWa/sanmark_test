@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use phpDocumentor\Reflection\Types\Self_;
@@ -15,9 +16,10 @@ class Runner extends Model
 
     public function getDurationAttribute()
     {
-        $start  = new Carbon($this->end_time);
-        $end  = new Carbon($this->start_time);
-       $duration=$start->diff($end)->format('%H:%I:%S');
+
+        $start_datetime = new DateTime(date('Y-m-d').' '.$this->start_time);
+        $end_datetime = new DateTime(date('Y-m-d').' '.$this->end_time);
+        $duration=strtotime($this->end_time) - strtotime($this->start_time);
        return $duration;
     }
 

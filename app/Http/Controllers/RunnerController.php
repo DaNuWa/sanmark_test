@@ -30,9 +30,9 @@ class RunnerController extends Controller
         $data =Runner::all();
 
         $runner_info = $data->map(function ($runner){
-            $speed=((int)$runner->speed/(int)$runner->duration);
+         //   $speed=0 ? 0 :((int)$runner->speed/(int)$runner->duration);
             return ["name"=>$runner->name,"radius" => $runner->radius , "laps" => $runner->laps,"start_time"=>$runner->start_time,
-            "end_time"=>$runner->end_time,"duration"=>$runner->duration,"speed"=>round($speed,2)];
+            "end_time"=>$runner->end_time,"duration"=>$runner->duration];//,"speed"=>round($speed,2)];
         });
         try {
             return ((new \Yajra\DataTables\DataTables)::of($runner_info)->addIndexColumn()->make(true));

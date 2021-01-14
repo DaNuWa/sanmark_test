@@ -75,7 +75,6 @@
 
                 columns: [
                     {data: "name"},
-                    {data: "speed"},
                     {data: "radius"},
                     {data: "start_time"},
                     {data: "end_time"},
